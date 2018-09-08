@@ -1,0 +1,212 @@
+Start testing: Sep 09 00:12 NZST
+----------------------------------------------------------
+1/11 Testing: arithmetics::isnan
+1/11 Test: arithmetics::isnan
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/arithmetics/isnan"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/arithmetics
+"arithmetics::isnan" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"arithmetics::isnan" end time: Sep 09 00:12 NZST
+"arithmetics::isnan" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/11 Testing: base16demo
+2/11 Test: base16demo
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/encoding/base16demo"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/encoding
+"base16demo" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"base16demo" end time: Sep 09 00:12 NZST
+"base16demo" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/11 Testing: cxxUsage::algorithms::hashing
+3/11 Test: cxxUsage::algorithms::hashing
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/hashing/test_hashing"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/hashing
+"cxxUsage::algorithms::hashing" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+1073741825
+1073741826
+1610612738
+1073741827
+1342177283
+1610612739
+1879048195
+1073741828
+1207959556
+1342177284
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"cxxUsage::algorithms::hashing" end time: Sep 09 00:12 NZST
+"cxxUsage::algorithms::hashing" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/11 Testing: std::random::test-drand48
+4/11 Test: std::random::test-drand48
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/random/std_rand"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/random
+"std::random::test-drand48" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+uniform_real_distribution double (0.0,1.0):
+0.0-0.1: *********
+0.1-0.2: *********
+0.2-0.3: *********
+0.3-0.4: *********
+0.4-0.5: *********
+0.5-0.6: *********
+0.6-0.7: *********
+0.7-0.8: *********
+0.8-0.9: *********
+0.9-1.0: *********
+liunx pseudo drand48() (0.0,1.0):
+0.0-0.1: *********
+0.1-0.2: *********
+0.2-0.3: *********
+0.3-0.4: *********
+0.4-0.5: *********
+0.5-0.6: *********
+0.6-0.7: *********
+0.7-0.8: *********
+0.8-0.9: *********
+0.9-1.0: *********
+bsd pseudo bsd_drand48() (0.0,1.0):
+0.0-0.1: *********
+0.1-0.2: *********
+0.2-0.3: *********
+0.3-0.4: *********
+0.4-0.5: *********
+0.5-0.6: *********
+0.6-0.7: *********
+0.7-0.8: *********
+0.8-0.9: *********
+0.9-1.0: *********
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"std::random::test-drand48" end time: Sep 09 00:12 NZST
+"std::random::test-drand48" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/11 Testing: std::algorithm::accumulate
+5/11 Test: std::algorithm::accumulate
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_accumulate"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::accumulate" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::accumulate" end time: Sep 09 00:12 NZST
+"std::algorithm::accumulate" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/11 Testing: std::algorithm::count
+6/11 Test: std::algorithm::count
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_count"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::count" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::count" end time: Sep 09 00:12 NZST
+"std::algorithm::count" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/11 Testing: std::algorithm::equal
+7/11 Test: std::algorithm::equal
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_equal"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::equal" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::equal" end time: Sep 09 00:12 NZST
+"std::algorithm::equal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/11 Testing: std::algorithm::generate
+8/11 Test: std::algorithm::generate
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_generate"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::generate" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::generate" end time: Sep 09 00:12 NZST
+"std::algorithm::generate" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/11 Testing: std::algorithm::transform
+9/11 Test: std::algorithm::transform
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_transform"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::transform" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::transform" end time: Sep 09 00:12 NZST
+"std::algorithm::transform" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/11 Testing: std::algorithm::find_if
+10/11 Test: std::algorithm::find_if
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_find_if"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::find_if" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::find_if" end time: Sep 09 00:12 NZST
+"std::algorithm::find_if" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/11 Testing: std::algorithm::inner_product
+11/11 Test: std::algorithm::inner_product
+Command: "/work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl/std_inner_product"
+Directory: /work/dev/cxx/github.com/powergun/cxxAlgorithms/build/stl
+"std::algorithm::inner_product" start time: Sep 09 00:12 NZST
+Output:
+----------------------------------------------------------
+..G..G....B..
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"std::algorithm::inner_product" end time: Sep 09 00:12 NZST
+"std::algorithm::inner_product" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Sep 09 00:12 NZST

@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/work/dev/cxx/github.com/powergun/cxxAlgorithms/stl/std_accumulate.cpp
+numeric
+-
+map
+-
+string
+-
+cassert
+-
+

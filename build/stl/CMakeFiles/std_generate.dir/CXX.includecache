@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/work/dev/cxx/github.com/powergun/cxxAlgorithms/stl/std_generate.cpp
+algorithm
+-
+map
+-
+random
+-
+vector
+-
+cassert
+-
+

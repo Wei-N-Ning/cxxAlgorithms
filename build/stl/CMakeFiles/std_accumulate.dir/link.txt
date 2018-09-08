@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/std_accumulate.dir/std_accumulate.cpp.o  -o std_accumulate 

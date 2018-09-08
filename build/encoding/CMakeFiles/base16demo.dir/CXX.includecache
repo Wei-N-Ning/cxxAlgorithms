@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/work/dev/cxx/github.com/powergun/cxxAlgorithms/encoding/base16/demoBase16.cc
+cassert
+-
+iostream
+-
+

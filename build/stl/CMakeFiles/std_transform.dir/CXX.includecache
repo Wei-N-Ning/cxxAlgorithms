@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/work/dev/cxx/github.com/powergun/cxxAlgorithms/stl/std_transform.cpp
+algorithm
+-
+vector
+-
+cassert
+-
+

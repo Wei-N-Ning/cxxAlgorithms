@@ -1,0 +1,49 @@
+
+add_executable(std_accumulate std_accumulate.cpp)
+set_target_properties(std_accumulate
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::accumulate"
+    COMMAND std_accumulate)
+
+add_executable(std_count std_count.cpp)
+set_target_properties(std_count
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::count"
+    COMMAND std_count)
+
+add_executable(std_equal std_equal.cpp)
+set_target_properties(std_equal
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::equal"
+    COMMAND std_equal)
+
+add_executable(std_generate std_generate.cpp)
+set_target_properties(std_generate
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::generate"
+    COMMAND std_generate)
+
+add_executable(std_transform std_transform.cpp)
+set_target_properties(std_transform
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::transform"
+    COMMAND std_transform)
+
+add_executable(std_find_if std_find_if.cpp)
+set_target_properties(std_find_if
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::find_if"
+    COMMAND std_find_if)
+
+add_executable(std_inner_product std_inner_product.cpp)
+set_target_properties(std_inner_product
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "std::algorithm::inner_product"
+    COMMAND std_inner_product)

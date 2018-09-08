@@ -1,0 +1,13 @@
+arithmetics::isnan 2 0.000960038
+base16demo 2 0.00190338
+cxxUsage::algorithms::hashing 2 0.00180583
+std_rand 0 0
+std::algorithm::accumulate 2 0.00152936
+std::algorithm::count 2 0.00151548
+std::algorithm::equal 2 0.000793454
+std::algorithm::generate 2 0.00201472
+std::algorithm::transform 2 0.0014722
+std::algorithm::find_if 2 0.00170525
+std::algorithm::inner_product 2 0.00176481
+std::random::test-drand48 1 0.00674729
+---
