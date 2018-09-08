@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/base16demo.dir/base16/demoBase16.cc.o  -o base16demo 

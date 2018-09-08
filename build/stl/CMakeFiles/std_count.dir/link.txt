@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/std_count.dir/std_count.cpp.o  -o std_count 

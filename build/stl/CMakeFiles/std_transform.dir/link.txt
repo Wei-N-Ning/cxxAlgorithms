@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/std_transform.dir/std_transform.cpp.o  -o std_transform 
