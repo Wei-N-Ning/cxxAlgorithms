@@ -47,3 +47,18 @@ set_target_properties(std_inner_product
     CXX_STANDARD 14)
 add_test(NAME "std::algorithm::inner_product"
     COMMAND std_inner_product)
+
+
+add_executable(std_advance std_advance/vector.cpp)
+set_target_properties(std_advance
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "container::std-advance"
+    COMMAND std_advance)
+
+add_executable(std_remove std_remove/vector.cpp)
+set_target_properties(std_remove
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME "container::std-remove"
+    COMMAND std_remove)
