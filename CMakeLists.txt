@@ -3,6 +3,7 @@ project(CxxAlgorithms)
 
 set(CMAKE_CXX_STANDARD 14)
 
+enable_testing()
 include(tinyCUnit/tinyCUnit.cmake)
 
 add_subdirectory(arithmetics)

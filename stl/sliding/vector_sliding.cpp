@@ -13,75 +13,112 @@
 // the term for this pattern is "slide" as explained in the chapter in
 // this book "generic slide function"
 
+// IMPORTANT: <from> and <to> must be tested to make sure rotating in
+// the correct direction
 
 #include <algorithm>
 #include <vector>
+#include <iostream>
+#include <iterator>
 #include <cassert>
 
 void RunTinyTests();
 
-void test_slide_one_element() {
-    std::vector<int> haystack{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    //                                    >        <
+template<typename Elem>
+static void slide(std::vector<Elem>& v, 
+                  size_t fromIdx,
+                  size_t toIdx,
+                  size_t numElements) {
+    if (fromIdx < toIdx) {
+        if (toIdx < v.size() &&
+            fromIdx + numElements < v.size())
+        {
+            std::rotate(
+                v.begin() + fromIdx,
+                v.begin() + fromIdx + numElements,
+                v.begin() + toIdx + 1
+            );
+        }
+    } else if (fromIdx > toIdx) {
+        if (fromIdx < v.size() &&
+            fromIdx + numElements < v.size()) {
+            std::rotate(
+                v.begin() + toIdx,
+                v.begin() + fromIdx,
+                v.begin() + fromIdx + numElements
+            );
+        }
+    }
+}
 
-    // low to high
-    size_t from_index = 4;
-    size_t to_index = 7;
-    std::rotate(
-        haystack.begin() + from_index,
-        haystack.begin() + to_index,
-        haystack.begin() + to_index + 1);
-
-    std::vector<int> expected{0, 1, 2, 3, 7, 4, 5, 6, 8, 9};
+template<typename Elem>
+static void verify(std::vector<Elem>& actual, std::vector<Elem>& expected) {
     bool success = std::equal(
-        haystack.cbegin(),
-        haystack.cend(),
+        actual.cbegin(),
+        actual.cend(),
         expected.begin());
-
     assert(success);
+}
+
+template<typename Elem>
+static void pprint(const std::vector<Elem>& v) {
+    std::ostream_iterator<Elem> it(std::cout, " ");
+    std::copy(v.cbegin(), v.cend() - 1, it);
+    std::cout << v.back() << std::endl;
+}
+
+void test_slide_one_element() {
+    std::vector<int> haystack(10, 0), expected(10, 0);
+    
+    // low to high
+    haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    //                      *--------|
+    expected = {0, 1, 2, 3, 5, 6, 7, 4, 8, 9};
+    
+    slide(haystack, 4, 7, 1);
+    verify(haystack, expected);
 
     // high to low
     haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    from_index = 7;
-    to_index = 4;
+    //                |--------*
+    expected = {0, 1, 5, 2, 3, 4, 6, 7, 8, 9};
+    slide(haystack, 5, 2, 1);
+    verify(haystack, expected);
 
-    std::rotate(
-        haystack.begin() + from_index,
-        haystack.begin() + to_index,
-        haystack.begin() + to_index + 1);
+    // output bound, expect no change to haystack
+    haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    expected = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    slide(haystack, 4, 7, 100);
+    verify(haystack, expected);
+    slide(haystack, 7, 4, 100);
+    verify(haystack, expected);
+    slide(haystack, 3, 100, 1);
+    verify(haystack, expected);
+    slide(haystack, 123, 3, 1);
+    verify(haystack, expected);
 
-    expected = {0, 1, 2, 3, 7, 4, 5, 6, 8, 9};
-    success = std::equal(
-        haystack.cbegin(),
-        haystack.cend(),
-        expected.begin());
+    // overlapping
+    haystack = {0, 1, 2, 3, 4};
+    slide(haystack, 3, 3, 1);
+    pprint(haystack);  // no changes
+    slide(haystack, 2, 3, 1);
+    pprint(haystack);
+    slide(haystack, 3, 2, 1);
+    pprint(haystack);
 
-    assert(success);
+    // cross over, numElements >= abs(from - to)
+    haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    //                      .............
+    // 0 1 2 8 3 4 5 6 7 9
+    slide(haystack, 4, 7, 5);
+    // pprint(haystack);
 }
 
 // Note the use of "numElements" instead of hardcoding it to 1
 void test_slide_multiple_elements() {
-    std::vector<int> haystack{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    //                             |------*******
-
-    size_t from_index = 4;
-    size_t to_index = 2;
-    size_t numElements = 3;
-    std::rotate(
-        haystack.begin() + to_index,
-        haystack.begin() + from_index,
-        haystack.begin() + from_index + numElements
-        );
-
-    std::vector<int> expected{0, 1, 4, 5, 6, 2, 3, 7, 8, 9};
-    bool success = std::equal(
-        haystack.cbegin(),
-        haystack.cend(),
-        expected.begin());
-
-    assert(success);
+    ;
 }
-
+    
 int main(int argc, char **argv) {
     RunTinyTests();
     return 0;
