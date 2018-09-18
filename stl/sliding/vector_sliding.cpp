@@ -52,7 +52,7 @@ static void slide(std::vector<Elem>& v,
 }
 
 template<typename Elem>
-static void verify(std::vector<Elem>& actual, std::vector<Elem>& expected) {
+static void verify(const std::vector<Elem>& actual, const std::vector<Elem>& expected) {
     bool success = std::equal(
         actual.cbegin(),
         actual.cend(),
@@ -100,23 +100,26 @@ void test_slide_one_element() {
     // overlapping
     haystack = {0, 1, 2, 3, 4};
     slide(haystack, 3, 3, 1);
-    pprint(haystack);  // no changes
-    slide(haystack, 2, 3, 1);
-    pprint(haystack);
-    slide(haystack, 3, 2, 1);
-    pprint(haystack);
+    verify(haystack, std::vector<int>{0, 1, 2, 3, 4});  // no changes
 
-    // cross over, numElements >= abs(from - to)
-    haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    //                      .............
-    // 0 1 2 8 3 4 5 6 7 9
-    slide(haystack, 4, 7, 5);
-    // pprint(haystack);
+    // adjacent elements 
+    slide(haystack, 2, 3, 1);
+    verify(haystack, std::vector<int>{0, 1, 3, 2, 4});
+    slide(haystack, 3, 2, 1);
+    verify(haystack, std::vector<int>{0, 1, 2, 3, 4});  
 }
 
 // Note the use of "numElements" instead of hardcoding it to 1
 void test_slide_multiple_elements() {
-    ;
+    std::vector<int> haystack(10, 0), expected(10, 0);
+    
+    // cross over, numElements >= abs(from - to)
+    // expect "capping" at the rear
+    haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    //                      .............
+    expected = {0, 1, 2, 3, 9, 4, 5, 6, 7, 8};
+    slide(haystack, 4, 7, 3);
+    pprint(haystack);
 }
     
 int main(int argc, char **argv) {
