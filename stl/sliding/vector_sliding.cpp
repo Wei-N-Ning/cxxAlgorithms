@@ -23,6 +23,8 @@ void RunTinyTests();
 void test_slide_one_element() {
     std::vector<int> haystack{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     //                                    >        <
+
+    // low to high
     size_t from_index = 4;
     size_t to_index = 7;
     std::rotate(
@@ -32,6 +34,24 @@ void test_slide_one_element() {
 
     std::vector<int> expected{0, 1, 2, 3, 7, 4, 5, 6, 8, 9};
     bool success = std::equal(
+        haystack.cbegin(),
+        haystack.cend(),
+        expected.begin());
+
+    assert(success);
+
+    // high to low
+    haystack = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+    from_index = 7;
+    to_index = 4;
+
+    std::rotate(
+        haystack.begin() + from_index,
+        haystack.begin() + to_index,
+        haystack.begin() + to_index + 1);
+
+    expected = {0, 1, 2, 3, 7, 4, 5, 6, 8, 9};
+    success = std::equal(
         haystack.cbegin(),
         haystack.cend(),
         expected.begin());

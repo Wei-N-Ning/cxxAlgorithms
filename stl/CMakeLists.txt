@@ -2,6 +2,7 @@
 add_subdirectory(rotation)
 add_subdirectory(insertion)
 add_subdirectory(sliding)
+#add_subdirectory(reversing)
 
 add_executable(std_accumulate std_accumulate.cpp)
 set_target_properties(std_accumulate
