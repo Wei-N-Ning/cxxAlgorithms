@@ -1,4 +1,7 @@
 
+add_subdirectory(rotation)
+add_subdirectory(insert)
+
 add_executable(std_accumulate std_accumulate.cpp)
 set_target_properties(std_accumulate
     PROPERTIES
@@ -62,3 +65,13 @@ set_target_properties(std_remove
     CXX_STANDARD 14)
 add_test(NAME "container::std-remove"
     COMMAND std_remove)
+
+add_tinytest_executable(move_vector_element_to_position
+    move_vector_element_to_position.cpp)
+set_target_properties(move_vector_element_to_position
+    PROPERTIES
+    CXX_STANDARD 14)
+add_test(NAME
+    "container::vector::move-element-to-pos"
+    COMMAND
+    move_vector_element_to_position)
