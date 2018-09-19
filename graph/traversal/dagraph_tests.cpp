@@ -36,14 +36,15 @@ void test_add_edges_from_scratch() {
 void test_create_graph_from_string() {
     using namespace graph;
 
-    const char* str = R"IDDQD(
-# // is accepted
+    std::string str = R"IDDQD(
+ # // is accepted
 there is->a //cow
 
 # __ is accepted
 de123 -> __d3
 
 # expect node "*4d" is only created once
+*4d -> 13d1
 *4d -> 13d1
 *4d -> iad
 
@@ -53,8 +54,10 @@ de123 -> __d3
 
     // expect number of nodes created
     assert(7 == g.numNodes());
-}
 
+    // expect connection
+    assert(2 == g.tos("*4d ").size());
+}
 
 int main(int argc, char **argv) {
     RunTinyTests();

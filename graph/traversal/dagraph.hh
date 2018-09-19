@@ -15,8 +15,8 @@ namespace graph {
 
 // node interface
 struct Node {
-    explicit Node(const std::string& label)
-        : m_label(label) {
+    explicit Node(std::string label)
+        : m_label(std::move(label)) {
         ;
     }
 
@@ -102,7 +102,13 @@ Dagraph createFromString(const std::string& str) {
     std::stringstream ss(str);
     std::string line;
 
+    auto strip = [](std::string& o_str) {
+        o_str.erase(0, o_str.find_first_not_of("\t\n\v\f\r "));
+        o_str.erase(o_str.find_last_not_of("\t\n\v\f\r ") + 1);
+    };
+
     while (std::getline(ss, line).good()) {
+        strip(line);
         if (line.empty() or line[0] == '#') {
             continue;
         }
