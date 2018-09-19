@@ -75,6 +75,10 @@ public:
         return it->second.get();
     }
 
+    size_t numNodes() const  {
+        return m_nodes.size();
+    }
+
     Tos tos(const std::string& from) {
         auto nit = m_nodes.find(from);
         if (nit == m_nodes.end()) {
@@ -97,12 +101,17 @@ Dagraph createFromString(const std::string& str) {
     Dagraph g;
     std::stringstream ss(str);
     std::string line;
+
     while (std::getline(ss, line).good()) {
+        if (line.empty() or line[0] == '#') {
+            continue;
+        }
         auto arrow = line.find("->");
         assert(arrow != std::string::npos);
-        auto fromNode = line.substr(0, arrow);
-        auto toNode = line.substr(arrow + 2);
-
+        auto from = line.substr(0, arrow);
+        auto to = line.substr(arrow + 2);
+        assert(! (from.empty() or to.empty()));
+        g.addEdge(from, to);
     }
     return g;
 }

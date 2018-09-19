@@ -33,6 +33,27 @@ void test_add_edges_from_scratch() {
     assert(d.tos("a").size() == 2);
 }
 
+void test_create_graph_from_string() {
+    using namespace graph;
+
+    const char* str = R"IDDQD(
+# // is accepted
+there is->a //cow
+
+# __ is accepted
+de123 -> __d3
+
+# expect node "*4d" is only created once
+*4d -> 13d1
+*4d -> iad
+
+# the totally number of nodes should be 7
+)IDDQD";
+    auto g = graph::createFromString(str);
+
+    // expect number of nodes created
+    assert(7 == g.numNodes());
+}
 
 
 int main(int argc, char **argv) {
