@@ -33,3 +33,13 @@ TEST_CASE ("generate nil uuid") {
     boost::regex re{R"RE([0\-]+)RE"};
     CHECK(boost::regex_match(s, re));
 }
+
+TEST_CASE ("random number generator") {
+    using namespace boost::uuids;
+
+    random_generator gen;
+    uuid id = gen();
+    boost::regex re{R"RE([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12})RE"};
+    std::string s{to_string(id)}; // boost::uuids::to_string
+    CHECK(boost::regex_match(s, re));
+}

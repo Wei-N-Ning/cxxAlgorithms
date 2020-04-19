@@ -11,3 +11,8 @@ add_executable(string_to_uuid string_to_uuid.cpp)
 target_link_libraries(string_to_uuid PRIVATE doctest ${Boost_LIBRARIES})
 target_include_directories(string_to_uuid PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "random::boost-string-to-uuid" COMMAND string_to_uuid)
+
+add_executable(uniform_dist_rand uniform_dist_rand.cpp)
+target_link_libraries(uniform_dist_rand PRIVATE doctest)
+target_include_directories(uniform_dist_rand PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "random::std-uniform-distribution-random" COMMAND uniform_dist_rand)
