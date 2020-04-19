@@ -1,10 +1,17 @@
 cmake_minimum_required(VERSION 3.8)
 project(CxxAlgorithms)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+set(Boost_NO_SYSTEM_PATHS TRUE)
+set(Boost_USE_STATIC_LIBS TRUE)
+set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/vendor/boost-1.72.0)
+find_package(Boost 1.72.0 REQUIRED COMPONENTS regex)
 
 enable_testing()
-include(tinyCUnit/tinyCUnit.cmake)
+include(vendor/tinyCUnit/tinyCUnit.cmake)
+add_subdirectory(vendor/doctest)
 
 add_subdirectory(arithmetics)
 add_subdirectory(casting)
