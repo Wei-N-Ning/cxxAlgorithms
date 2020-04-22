@@ -16,3 +16,7 @@ add_executable(uniform_dist_rand uniform_dist_rand.cpp)
 target_link_libraries(uniform_dist_rand PRIVATE doctest)
 target_include_directories(uniform_dist_rand PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "random::std-uniform-distribution-random" COMMAND uniform_dist_rand)
+
+add_executable(many_random_nums many_random_nums.cpp)
+target_link_libraries(many_random_nums PRIVATE doctest)
+add_test(NAME "random::many-random-numbers" COMMAND many_random_nums)

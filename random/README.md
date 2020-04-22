@@ -12,3 +12,12 @@ see also: <https://www.boost.org/doc/libs/1_72_0/libs/multiprecision/doc/html/bo
 
 boost provides string_generator that creates a UUID object from plain string, see: string_to_uuid.cpp 
 
+## Random Number Generator using standard library
+
+### Using Ranges library
+
+see: many_random_nums.cpp
+
+range lib repo: <https://github.com/ericniebler/range-v3>
+
+source: <https://www.fluentcpp.com/2019/05/24/how-to-fill-a-cpp-collection-with-random-values/>
