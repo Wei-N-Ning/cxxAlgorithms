@@ -23,6 +23,14 @@ TEST_CASE ("generate many random ints") {
     std::random_device random_device;
     std::mt19937 random_engine(random_device());
     std::uniform_int_distribution<int> dist(1, 100);
-    std::vector<int> nums{5000};
-    std::generate(nums.begin(), nums.end(), [&dist, &random_engine]() { return dist(random_engine); });
+    std::vector<int> nums(50);
+    // std::generate
+    // https://en.cppreference.com/w/cpp/algorithm/generate
+    auto gen = [&dist, &random_engine]() { return dist(random_engine); };
+    std::generate(nums.begin(), nums.end(), gen);
+    std::copy(nums.begin(), nums.end(), std::ostream_iterator<int>{std::cout, " "});
+    std::cout << std::endl;
+    std::generate_n(nums.begin(), nums.size(), gen);
+    std::copy(nums.begin(), nums.end(), std::ostream_iterator<int>{std::cout, " "});
+    std::cout << std::endl;
 }
