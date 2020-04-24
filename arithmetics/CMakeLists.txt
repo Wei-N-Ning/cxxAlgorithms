@@ -5,3 +5,7 @@ add_test(
     COMMAND
     isnan
 )
+
+add_executable(gcd gcd.cpp)
+target_link_libraries(gcd PRIVATE doctest)
+add_test(NAME "arithmetic::gcd" COMMAND gcd)
