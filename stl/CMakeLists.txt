@@ -67,3 +67,7 @@ set_target_properties(std_remove
     CXX_STANDARD 14)
 add_test(NAME "container::std-remove"
     COMMAND std_remove)
+
+add_executable(std_unpack_tuple_pair unpack/tuple_pair_unpack.cpp)
+target_link_libraries(std_unpack_tuple_pair PRIVATE doctest)
+add_test(NAME "container::unpack::tuple-pair" COMMAND std_unpack_tuple_pair)
