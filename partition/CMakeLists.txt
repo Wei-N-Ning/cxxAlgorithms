@@ -1,3 +1,3 @@
-add_executable(stable_partition stable_partition.cpp)
-target_link_libraries(stable_partition PRIVATE doctest)
-add_test(NAME "partition::stable-partition" COMMAND stable_partition)
+add_executable(parition_stable_partition stable_partition.cpp)
+target_link_libraries(parition_stable_partition PRIVATE doctest)
+add_test(NAME "partition::stable-partition" COMMAND parition_stable_partition)
