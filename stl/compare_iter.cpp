@@ -1,3 +1,5 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
 
 #include <iterator>
 #include <vector>
@@ -5,28 +7,21 @@
 
 using V = std::vector<int>;
 
-void RunTinyTests();
-
-void test_equality() {
+TEST_CASE ("test_equality()") {
     V v(10, 0);
-    assert(v.cbegin() + 4 == v.end() - 6);
-    assert(v.end() == v.cbegin() + v.size());
-    assert(v.begin() - 1 != v.end());
+    CHECK(v.cbegin() + 4 == v.end() - 6);
+    CHECK(v.end() == v.cbegin() + v.size());
+    CHECK(v.begin() - 1 != v.end());
 }
 
-void test_arithmetic_comparison() {
+TEST_CASE ("test_arithmetic_comparison()") {
     V v(10, 0);
-    assert(v.begin() < v.cend());
-    assert(v.begin() + 39 > v.cend());
-    assert(10 == v.end() - v.cbegin());
+    CHECK(v.begin() < v.cend());
+    CHECK(v.begin() + 39 > v.cend());
+    CHECK(10 == v.end() - v.cbegin());
 
     int a[8];
-    assert(std::begin(a) < std::end(a));
-    assert(std::begin(a) + 39 > std::end(a));
-    assert(8 == std::end(a) - std::begin(a));
-}
-
-int main() {
-    RunTinyTests();
-    return 0;
+    CHECK(std::begin(a) < std::end(a));
+    CHECK(std::begin(a) + 39 > std::end(a));
+    CHECK(8 == std::end(a) - std::begin(a));
 }

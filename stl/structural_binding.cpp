@@ -4,6 +4,7 @@
 #include <utility>
 #include <string>
 #include <tuple>
+#include <unordered_map>
 
 // inspired by c++17 stl cookbook P/13
 
@@ -49,7 +50,27 @@ TEST_CASE ("unpack struct") {
     std::vector<Level> levels{e1m1};
     for (const auto &[name, n_creatures, creatures] : levels) {
         for (size_t i = 0; i < n_creatures; ++i) {
-            std::cout << creatures[i].name << std::endl;
+            CHECK(creatures[i].name.size() > 0);
         }
+    }
+
+    // c++ stl cookbook P/15
+    // when using structure bindings, we don't have std::tie dummy variables,
+    // so we have to bind all the values to named variables.
+    for (const auto &[name, _1, _2] : levels) {
+        CHECK(name.size() > 0);
+    }
+}
+
+// c++ stl cookbook L603
+// a lot of fundamental data structures in stl are immediately accessible using structural binding
+TEST_CASE ("unpack map") {
+    std::unordered_map<size_t, std::string> m{
+        {1001, "gunner"},
+        {1002, "imp"},
+        {1003, "commando"}
+    };
+    for (const auto &[code, name] : m) {
+        if (code == 1002) CHECK_EQ(name, "imp");
     }
 }
