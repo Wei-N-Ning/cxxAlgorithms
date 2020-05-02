@@ -1,23 +1,9 @@
 //
 // Created by wein on 19/09/18.
 //
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
 
-namespace graph {
-
-namespace bfs {
-
-
-}
-
-}
-
-void RunTinyTests();
-
-void test_nothing() {
+TEST_CASE ("") {
     ;
-}
-
-int main(int argc, char **argv) {
-    RunTinyTests();
-    return 0;
 }

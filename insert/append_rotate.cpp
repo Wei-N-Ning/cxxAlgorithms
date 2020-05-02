@@ -4,6 +4,8 @@
 
 // source
 // C++ FAQ P1
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
 
 #include <array>
 #include <vector>
@@ -11,9 +13,7 @@
 
 #include <cassert>
 
-void RunTinyTests();
-
-void test_append_rotate() {
+TEST_CASE ("test_append_rotate()") {
     std::vector<int> haystack{1, 2, 3, 4};
     std::vector<int> needle{-1, -3, -5};
 
@@ -32,9 +32,4 @@ void test_append_rotate() {
         std::equal(haystack.cbegin(), haystack.cend(), expected.cbegin());
 
     assert(success);
-}
-
-int main(int argc, char **argv) {
-    RunTinyTests();
-    return 0;
 }

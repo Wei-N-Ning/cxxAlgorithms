@@ -1,11 +1,11 @@
 //
 // Created by wein on 16/03/20.
 //
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
 
 #include <functional>
 #include <unordered_map>
-
-void RunTinyTests();
 
 template <typename T> T fib(T n) {
   if (n == 0 | n == 1) {
@@ -32,16 +32,16 @@ template <typename T> std::function<T(T)> memoize(std::function<T(T)> f) {
   return g;
 }
 
-void xtest_fib_original() {
-  fib(37);
-  fib(38);
-  fib(37.0);
-  fib(38.0);
-  fib(37l);
-  fib(38l);
+TEST_CASE ("test_fib_original()") {
+//  fib(37);
+//  fib(38);
+//  fib(37.0);
+//  fib(38.0);
+//  fib(37l);
+//  fib(38l);
 }
 
-void test_fib_lookup() {
+TEST_CASE ("test_fib_lookup()") {
   // this awkward cast is needed, and the official reference (cppreference)
   // shows a similar example:
   // https://en.cppreference.com/w/cpp/utility/functional/function
@@ -60,9 +60,4 @@ void test_fib_lookup() {
   g(38);
   g(38);
   g(38);
-}
-
-int main() {
-  RunTinyTests();
-  return 0;
 }

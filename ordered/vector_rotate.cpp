@@ -1,6 +1,8 @@
 //
 // Created by wein on 18/09/18.
 //
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
 
 #include <iostream>
 #include <algorithm>
@@ -31,9 +33,7 @@ static void pprint(const std::vector<Elem>& v, const char* delimiter) {
     std::cout << spprint(v, delimiter) << std::endl;
 }
 
-void RunTinyTests();
-
-void test_range_of_elements() {
+TEST_CASE ("test_range_of_elements()") {
     std::vector<double> v{0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
     std::cout << std::endl;
     pprint(v, ",");
@@ -64,9 +64,4 @@ void test_range_of_elements() {
         pprint(v_, ",");
     }
 
-}
-
-int main(int argc, char **argv) {
-    RunTinyTests();
-    return 0;
 }

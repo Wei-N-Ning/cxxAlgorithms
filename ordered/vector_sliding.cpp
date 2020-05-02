@@ -16,13 +16,14 @@
 // IMPORTANT: <from> and <to> must be tested to make sure rotating in
 // the correct direction
 
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
+
 #include <algorithm>
 #include <vector>
 #include <iostream>
 #include <iterator>
 #include <cassert>
-
-void RunTinyTests();
 
 template<typename Elem>
 static void slide(std::vector<Elem>& v, 
@@ -67,7 +68,7 @@ static void pprint(const std::vector<Elem>& v) {
     std::cout << v.back() << std::endl;
 }
 
-void test_slide_one_element() {
+TEST_CASE ("test_slide_one_element()") {
     std::vector<int> haystack(10, 0), expected(10, 0);
     
     // low to high
@@ -110,7 +111,7 @@ void test_slide_one_element() {
 }
 
 // Note the use of "numElements" instead of hardcoding it to 1
-void test_slide_multiple_elements() {
+TEST_CASE ("test_slide_multiple_elements()") {
     std::vector<int> haystack(10, 0), expected(10, 0);
     
     // cross over, numElements >= abs(from - to)
@@ -120,9 +121,4 @@ void test_slide_multiple_elements() {
     expected = {0, 1, 2, 3, 9, 4, 5, 6, 7, 8};
     slide(haystack, 4, 7, 3);
     pprint(haystack);
-}
-    
-int main(int argc, char **argv) {
-    RunTinyTests();
-    return 0;
 }

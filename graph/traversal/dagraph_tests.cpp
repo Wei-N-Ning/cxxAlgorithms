@@ -1,14 +1,14 @@
 //
 // Created by wein on 19/09/18.
 //
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
 
 #include "dagraph.hh"
 
 #include <cassert>
 
-void RunTinyTests();
-
-void test_add_edges_from_scratch() {
+TEST_CASE ("test_add_edges_from_scratch()") {
     using namespace graph;
 
     Dagraph d;
@@ -33,7 +33,7 @@ void test_add_edges_from_scratch() {
     assert(d.tos("a").size() == 2);
 }
 
-void test_create_graph_from_string() {
+TEST_CASE ("test_create_graph_from_string()") {
     using namespace graph;
 
     std::string str = R"IDDQD(
@@ -57,9 +57,4 @@ de123 -> __d3
 
     // expect connection
     assert(2 == g.tos("*4d ").size());
-}
-
-int main(int argc, char **argv) {
-    RunTinyTests();
-    return 0;
 }

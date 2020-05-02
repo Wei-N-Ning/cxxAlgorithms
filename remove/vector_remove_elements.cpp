@@ -1,3 +1,6 @@
+#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+#include "doctest/doctest.h"
+
 #include <algorithm>
 #include <vector>
 #include <iostream>
@@ -21,9 +24,9 @@ inline void printVec(std::vector<T>& v) {
     }
 }
 
-void test_removeFromVector() {
+TEST_CASE ("test_removeFromVector()") {
     std::vector<int> v{1, 2, 3, 1, 2, 3, 1, 2, 3};
-    std::remove(v.begin(), v.end(), 3);
+    auto _ = std::remove(v.begin(), v.end(), 3);
     // the object at the end may have their original values or they
     // may not - they were copied to fill in the gaps but DO NOT 
     // rely on that
@@ -34,7 +37,7 @@ void test_removeFromVector() {
 // source more exception item 2 P8
 // recall //// remove() returns an iterator pointing to the first 
 // dead elements. ////
-void test_removeThenErase() {
+TEST_CASE ("test_removeThenErase()") {
     std::vector<int> v{1, 2, 3, 1, 2, 3, 1, 2, 3};
     v.erase(std::remove(v.begin(), v.end(), 3), v.end());
     printVec(v);
@@ -42,7 +45,7 @@ void test_removeThenErase() {
 
 // source more exception item 2 P10
 // use advance() and copy()
-void test_removeByCopy() {
+TEST_CASE ("test_removeByCopy()") {
     std::vector<int> v{1, 2, 3, 4, 5, 6, 7};
     // to remove element at index-4
     auto iter = v.begin();
@@ -51,11 +54,4 @@ void test_removeByCopy() {
     std::copy(++from, v.end(), iter);
     v.pop_back();
     printVec(v);
-}
-
-int main() {
-    test_removeFromVector();
-    test_removeThenErase();
-    test_removeByCopy();
-    return 0;
 }

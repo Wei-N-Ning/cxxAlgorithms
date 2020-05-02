@@ -1,24 +1,9 @@
 
-add_tinytest_executable(graph_traversal_dagraph_tests
-    traversal/dagraph_tests.cpp)
-set_target_properties(graph_traversal_dagraph_tests
-    PROPERTIES
-    CXX_STANDARD 14)
-add_test(
-    NAME
-    "graph::traversal::dagraph-tests"
-    COMMAND
-    graph_traversal_dagraph_tests
-)
+# test the graph class functionality
+add_executable(graph_traversal_dagraph traversal/dagraph_tests.cpp traversal/dagraph.hh)
+target_link_libraries(graph_traversal_dagraph PRIVATE doctest)
+add_test(NAME "graph::traversal::dagraph" COMMAND graph_traversal_dagraph)
 
-add_tinytest_executable(graph_traversal_bfs_tests
-    traversal/bfs_tests.cpp)
-set_target_properties(graph_traversal_bfs_tests
-    PROPERTIES
-    CXX_STANDARD 14)
-add_test(
-    NAME
-    "graph::traversal::bfs-tests"
-    COMMAND
-    graph_traversal_bfs_tests
-)
+add_executable(graph_traversal_bfs traversal/bfs_tests.cpp)
+target_link_libraries(graph_traversal_bfs PRIVATE doctest)
+add_test(NAME "graph::traversal::bfs-tests" COMMAND graph_traversal_bfs)

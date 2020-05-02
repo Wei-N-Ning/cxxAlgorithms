@@ -1,11 +1,3 @@
-add_tinytest_executable(memoization
-    lookup.cc)
-set_target_properties(memoization
-    PROPERTIES
-    CXX_STANDARD 17)
-add_test(
-    NAME
-    "memoization::lookup"
-    COMMAND
-    memoization
-)
+add_executable(memoization_lookup lookup.cc)
+target_link_libraries(memoization_lookup PRIVATE doctest)
+add_test(NAME "memoization::lookup" COMMAND memoization_lookup)
