@@ -14,3 +14,7 @@ add_test(NAME "insert::map-try-emplace" COMMAND insert_map_try_emplace)
 add_executable(insert_map_extract map_extract.cpp)
 target_link_libraries(insert_map_extract PRIVATE doctest)
 add_test(NAME "insert::map-extract" COMMAND insert_map_extract)
+
+add_executable(insert_deque deque.cpp)
+target_link_libraries(insert_deque PRIVATE doctest)
+add_test(NAME "insert::double-ended-queue" COMMAND insert_deque)
