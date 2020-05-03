@@ -7,6 +7,7 @@
 
 #include <random>
 #include <iostream>
+#include <fstream>
 #include <iterator>
 #include <vector>
 #include <algorithm>
@@ -44,5 +45,22 @@ TEST_CASE ("poor man's random number generator") {
     std::mt19937 g(rd());
     std::shuffle(v.begin(), v.end(), g);
     std::copy(v.begin(), v.end(), std::ostream_iterator<int>{std::cout, " "});
+    std::cout << std::endl;
+}
+
+template<typename T>
+void poorman_vector(std::size_t sz, std::vector<T> &o_vec) {
+    o_vec.resize(sz);
+    std::ifstream ifs{"/dev/urandom", std::ifstream::binary};
+    ifs.read((char *)o_vec.data(), sizeof(T) * sz);
+    ifs.close();
+}
+
+// this only supports vector
+// inspired by : https://gist.github.com/mortenpi/9745042
+TEST_CASE ("poor man's random number generator #2: /dev/urandom") {
+    std::vector<int> v;
+    poorman_vector(12, v);
+    std::copy(v.cbegin(), v.cend(), std::ostream_iterator<int>{std::cout, " "});
     std::cout << std::endl;
 }

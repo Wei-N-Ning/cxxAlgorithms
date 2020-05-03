@@ -10,3 +10,7 @@ add_executable(iteration_fib_iter fib_iter.cpp)
 target_link_libraries(iteration_fib_iter PRIVATE doctest)
 add_test(NAME "iteration::fibonacci-number-iterator" COMMAND iteration_fib_iter)
 
+add_executable(iteration_zip_iter zip_iter.cpp)
+target_link_libraries(iteration_zip_iter PRIVATE doctest)
+target_include_directories(iteration_zip_iter PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::zip-iterators" COMMAND iteration_zip_iter)
