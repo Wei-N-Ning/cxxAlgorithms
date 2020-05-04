@@ -14,3 +14,8 @@ add_executable(iteration_zip_iter zip_iter.cpp)
 target_link_libraries(iteration_zip_iter PRIVATE doctest)
 target_include_directories(iteration_zip_iter PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::zip-iterators" COMMAND iteration_zip_iter)
+
+add_executable(iteration_neighbour_elements iter_neighbour_elements.cpp)
+target_link_libraries(iteration_neighbour_elements PRIVATE doctest)
+target_include_directories(iteration_neighbour_elements PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::neighbour-elements" COMMAND iteration_neighbour_elements)
