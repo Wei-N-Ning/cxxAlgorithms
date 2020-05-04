@@ -16,6 +16,10 @@
 // c++ stl cookbook P/221
 // this leads me to some experiments with optional and reference_wrapper in cxxTemplate/references
 // see the reasoning below about mutability
+// NOTE:
+// there was a bug in find() and cfind();
+// - always #include <functional> header, so that the code works on gcc 7 and newer versions, 9.1 etc.
+// - pair std::ref with mut ref, and std::cref with immut ref; mutability in this case is derived from the iterator type
 
 template<typename T>
 class Trie {
