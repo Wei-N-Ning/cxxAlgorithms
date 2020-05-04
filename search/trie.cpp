@@ -11,6 +11,7 @@
 #include <optional>
 #include <vector>
 #include <iostream>
+#include <functional>
 
 // c++ stl cookbook P/221
 // this leads me to some experiments with optional and reference_wrapper in cxxTemplate/references
@@ -64,7 +65,7 @@ public:
     // immutability is enforced
     CFoundT cfind(T &&word) {
         if (auto it = tries.find(word); it != std::end(tries)) {
-            return std::ref(it->second);
+            return std::cref(it->second);
         }
         return {};
     }
