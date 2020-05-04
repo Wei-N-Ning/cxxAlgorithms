@@ -8,3 +8,8 @@ add_test(NAME "arithmetic::gcd" COMMAND arithmetic_gcd)
 
 add_executable(arithmetic_precision precision.cc)
 add_test(NAME "arithmetic::precision" COMMAND arithmetic_precision)
+
+add_executable(arithmetic_fourier_trans fourier_trans.cpp)
+target_link_libraries(arithmetic_fourier_trans PRIVATE doctest)
+target_include_directories(arithmetic_fourier_trans PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "arithmetic::fourier-trans" COMMAND arithmetic_fourier_trans)
