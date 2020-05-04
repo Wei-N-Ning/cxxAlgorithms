@@ -40,6 +40,11 @@ public:
         insert(c.begin(), c.end());
     }
 
+    template<typename Elem>
+    void insert(std::initializer_list<Elem>&& il) {
+        insert(std::begin(il), std::end(il));
+    }
+
     IteratorT begin() noexcept {
         return tries.begin();
     }
@@ -82,17 +87,21 @@ class TT;
 TEST_CASE ("insert") {
     Trie<std::string> t{};
     t.insert(std::vector<std::string>{"there", "is", "a", "cow"});
-    t.insert(std::vector<std::string>{"there", "is", "a", "silence"});
-    t.insert(std::vector<std::string>{"there", "is", "no", "spoon"});
+    t.insert({"there", "is", "a", "silence"});
+    t.insert({"there", "is", "no", "spoon"});
 
     // to retrieve a mutable reference, use find() instead of cfind()
     if (auto found = t.cfind("there"); found.has_value()) {
         const Trie<std::string> &v = found.value();
-
-        // v.insert(std::vector<std::string>{"e1m1", "needs", "iddqd"});
     } else {
         CHECK(false);
     }
 
-    t.dump(std::cout);
+    if (auto found = t.find("there"); found.has_value()) {
+        Trie<std::string> &v = found.value();
+        v.insert(std::vector<std::string>{"e1m1", "needs", "iddqd"});
+    } else {
+        CHECK(false);
+    }
+
 }
