@@ -19,3 +19,8 @@ add_executable(iteration_neighbour_elements iter_neighbour_elements.cpp)
 target_link_libraries(iteration_neighbour_elements PRIVATE doctest)
 target_include_directories(iteration_neighbour_elements PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::neighbour-elements" COMMAND iteration_neighbour_elements)
+
+add_executable(iteration_iterator_facade iterator_facade.cpp)
+target_link_libraries(iteration_iterator_facade PRIVATE doctest)
+target_include_directories(iteration_iterator_facade PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::iterator-facade" COMMAND iteration_iterator_facade)
