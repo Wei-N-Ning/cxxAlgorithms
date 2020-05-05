@@ -24,3 +24,7 @@ add_executable(iteration_iterator_facade iterator_facade.cpp)
 target_link_libraries(iteration_iterator_facade PRIVATE doctest)
 target_include_directories(iteration_iterator_facade PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::iterator-facade" COMMAND iteration_iterator_facade)
+
+add_executable(iteration_run_length_encoding run_length_encoding.cpp)
+target_link_libraries(iteration_run_length_encoding PRIVATE doctest)
+add_test(NAME "iteration::run-length-encoding" COMMAND iteration_run_length_encoding)
