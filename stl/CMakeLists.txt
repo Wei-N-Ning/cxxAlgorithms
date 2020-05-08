@@ -20,10 +20,6 @@ add_test(NAME "stl::find_if" COMMAND stl_find_if)
 add_executable(stl_inner_product std_inner_product.cpp)
 add_test(NAME "stl::inner_product" COMMAND stl_inner_product)
 
-add_executable(stl_structural_binding structural_binding.cpp)
-target_link_libraries(stl_structural_binding PRIVATE doctest)
-add_test(NAME "stl::structural-binding" COMMAND stl_structural_binding)
-
 add_executable(stl_compare_iter compare_iter.cpp)
 target_link_libraries(stl_compare_iter PRIVATE doctest)
 add_test(NAME "stl::compare-iterators" COMMAND stl_compare_iter)
