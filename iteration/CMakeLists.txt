@@ -28,3 +28,7 @@ add_test(NAME "iteration::iterator-facade" COMMAND iteration_iterator_facade)
 add_executable(iteration_run_length_encoding run_length_encoding.cpp)
 target_link_libraries(iteration_run_length_encoding PRIVATE doctest)
 add_test(NAME "iteration::run-length-encoding" COMMAND iteration_run_length_encoding)
+
+add_executable(iteration_zip_tuples zip_tuples.cpp)
+target_link_libraries(iteration_zip_tuples PRIVATE doctest)
+add_test(NAME "iteration::zip-tuples" COMMAND iteration_zip_tuples)
