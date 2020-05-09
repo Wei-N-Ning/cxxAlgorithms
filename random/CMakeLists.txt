@@ -20,3 +20,11 @@ add_test(NAME "random::std-uniform-distribution-random" COMMAND random_uniform_d
 add_executable(random_many_random_nums many_random_nums.cpp)
 target_link_libraries(random_many_random_nums PRIVATE doctest)
 add_test(NAME "random::many-random-numbers" COMMAND random_many_random_nums)
+
+add_executable(random_rand_histogram rand_histogram.cpp)
+target_link_libraries(random_rand_histogram PRIVATE doctest)
+add_test(NAME "random::rand-histogram" COMMAND random_rand_histogram)
+
+add_executable(random_stl_distribution stl_distribution.cpp)
+target_link_libraries(random_stl_distribution PRIVATE doctest)
+add_test(NAME "random::stl-distribution" COMMAND random_stl_distribution)

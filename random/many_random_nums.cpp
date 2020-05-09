@@ -3,8 +3,10 @@
 //
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
+
 #include "doctest/doctest.h"
 
+#include <chrono>
 #include <random>
 #include <iostream>
 #include <fstream>
@@ -44,6 +46,7 @@ TEST_CASE ("poor man's random number generator") {
     std::random_device rd;
     std::mt19937 g(rd());
     std::shuffle(v.begin(), v.end(), g);
+    std::cout << "// Poor man #1" << std::endl;
     std::copy(v.begin(), v.end(), std::ostream_iterator<int>{std::cout, " "});
     std::cout << std::endl;
 }
@@ -52,7 +55,7 @@ template<typename T>
 void poorman_vector(std::size_t sz, std::vector<T> &o_vec) {
     o_vec.resize(sz);
     std::ifstream ifs{"/dev/urandom", std::ifstream::binary};
-    ifs.read((char *)o_vec.data(), sizeof(T) * sz);
+    ifs.read((char *) o_vec.data(), sizeof(T) * sz);
     ifs.close();
 }
 
@@ -61,6 +64,28 @@ void poorman_vector(std::size_t sz, std::vector<T> &o_vec) {
 TEST_CASE ("poor man's random number generator #2: /dev/urandom") {
     std::vector<int> v;
     poorman_vector(12, v);
+    std::cout << "// Poor man #2" << std::endl;
+    std::copy(v.cbegin(), v.cend(), std::ostream_iterator<int>{std::cout, " "});
+    std::cout << std::endl;
+}
+
+template<typename T, typename RD = std::default_random_engine>
+void lazyman_vector(std::size_t sz, std::vector<T> &o_vec, T mi, T mx) {
+    using namespace std::chrono;
+    // see: https://stackoverflow.com/questions/19555121/how-to-get-current-timestamp-in-milliseconds-since-1970-just-the-way-java-gets
+    std::size_t seed = duration_cast<milliseconds>(
+        system_clock::now().time_since_epoch()).count();
+    RD rd(seed);
+    std::uniform_int_distribution<T> dist(mi, mx);
+    o_vec.resize(sz);
+    std::generate(std::begin(o_vec), std::end(o_vec),
+        [&dist, &rd]() { return dist(rd); });
+}
+
+TEST_CASE ("lazy man's random number generator: time-seeded") {
+    std::vector<int> v;
+    lazyman_vector(12, v, -1223, 1213);
+    std::cout << "// Lazy man" << std::endl;
     std::copy(v.cbegin(), v.cend(), std::ostream_iterator<int>{std::cout, " "});
     std::cout << std::endl;
 }

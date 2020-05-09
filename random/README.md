@@ -21,3 +21,19 @@ see: many_random_nums.cpp
 range lib repo: <https://github.com/ericniebler/range-v3>
 
 source: <https://www.fluentcpp.com/2019/05/24/how-to-fill-a-cpp-collection-with-random-values/>
+
+## A walk-through of C++11 random generators
+
+c++ stl cookbook P/387
+
+see: rand_histogram.cpp
+
+- usually std::default_random_engine is a good default choice for the average app
+- if we really need non-deterministic numbers, std::random_device does that
+- we can feed the ctor of any random engine with a real random number from std::random_device (or timestamp) - seeding
+
+## STL random distribution
+
+c++ stl cookbook P/394
+
+see: stl_distribution.cpp
