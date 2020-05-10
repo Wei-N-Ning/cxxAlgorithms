@@ -30,3 +30,7 @@ take a look at boost iterator facade (not the same as the deprecated std::iterat
 mentioned in master c++ stl P/33
 
 see iterator_facade.cpp
+
+## Use boost iterator facade to create a copy-sink
+
+see: custom_iter_facade.cpp

@@ -32,3 +32,9 @@ add_test(NAME "iteration::run-length-encoding" COMMAND iteration_run_length_enco
 add_executable(iteration_zip_tuples zip_tuples.cpp)
 target_link_libraries(iteration_zip_tuples PRIVATE doctest)
 add_test(NAME "iteration::zip-tuples" COMMAND iteration_zip_tuples)
+
+add_executable(iteration_custom_iter_facade custom_iter_facade.cpp)
+target_link_libraries(iteration_custom_iter_facade PRIVATE doctest)
+target_include_directories(iteration_custom_iter_facade PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::custom-iter-facade" COMMAND iteration_custom_iter_facade)
+
