@@ -13,3 +13,7 @@ add_executable(arithmetic_fourier_trans fourier_trans.cpp)
 target_link_libraries(arithmetic_fourier_trans PRIVATE doctest)
 target_include_directories(arithmetic_fourier_trans PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "arithmetic::fourier-trans" COMMAND arithmetic_fourier_trans)
+
+add_executable(arithmetic_limits limits.cpp)
+target_link_libraries(arithmetic_limits PRIVATE doctest)
+add_test(NAME "arithmetic::limits" COMMAND arithmetic_limits)

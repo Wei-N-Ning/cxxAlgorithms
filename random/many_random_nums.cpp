@@ -73,9 +73,16 @@ template<typename T, typename RD = std::default_random_engine>
 void lazyman_vector(std::size_t sz, std::vector<T> &o_vec, T mi, T mx) {
     using namespace std::chrono;
     // see: https://stackoverflow.com/questions/19555121/how-to-get-current-timestamp-in-milliseconds-since-1970-just-the-way-java-gets
-    std::size_t seed = duration_cast<milliseconds>(
-        system_clock::now().time_since_epoch()).count();
-    RD rd(seed);
+    // for high_resolution_clock, see
+    // https://en.cppreference.com/w/cpp/chrono/high_resolution_clock
+    // NOTE: as of gcc 9.1, high_resolution_clock is an alias of system_clock
+    std::size_t seed = high_resolution_clock::now().time_since_epoch().count();
+    // RD rd(seed);
+
+    // modern c++ cookbook: L1990
+    // to avoid the security risk (of having a deterministic seed), use the
+    // random device
+    RD rd(std::random_device{}());
     std::uniform_int_distribution<T> dist(mi, mx);
     o_vec.resize(sz);
     std::generate(std::begin(o_vec), std::end(o_vec),

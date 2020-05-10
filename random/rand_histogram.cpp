@@ -13,6 +13,8 @@
 #include <vector>
 
 // c++ stl cookbook P/392
+// see also: modern c++ cookbook P/2019 for a different histogram generation
+// algorithm that uses a horizontal axis and a unicode for the bar character
 
 template<typename RD>
 void histogram(std::size_t partitions, std::size_t samples) {
