@@ -15,6 +15,9 @@
 
 // modern c++ cookbook P/2039
 // worth comparing the perform between this version and the default/lazy version
+// L2055
+// in order to produce the best results, engines must have all their internal
+// state properly initialized before generating numbers
 
 TEST_CASE ("properly initialize a pseudo-random number generator to produce"
            "the best sequence") {

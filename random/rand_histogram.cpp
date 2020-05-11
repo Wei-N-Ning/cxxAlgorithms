@@ -20,6 +20,7 @@
 // that populates all the seed bits for mt19937 - compare the default-constructed
 // mt19937 (and its 64bit variant) with the fully-initialized version.
 // the latter shows more even distribution (fair randomness)
+// see mt19937_state.cpp for a dedicated example
 
 template<typename RD>
 void initialize_state(RD &rd) {
