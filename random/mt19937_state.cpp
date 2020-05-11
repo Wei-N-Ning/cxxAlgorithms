@@ -11,6 +11,7 @@
 #include <random>
 #include <iostream>
 #include <iterator>
+#include <functional>  // for std::ref in lower version of c++
 
 // modern c++ cookbook P/2039
 // worth comparing the perform between this version and the default/lazy version

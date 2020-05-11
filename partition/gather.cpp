@@ -12,6 +12,7 @@
 #include <numeric>
 #include <iostream>
 #include <utility>
+#include <functional>  // for std::not_fn in lower version of gcc
 
 // c++ stl cookbook P/252
 // NOTE: this algorithm is also explained in depth in Advance C++ Q&A, the first section
