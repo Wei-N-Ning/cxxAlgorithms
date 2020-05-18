@@ -13,6 +13,10 @@
 // source code:
 // https://github.com/PacktPublishing/Mastering-the-Cpp17-STL/blob/master/Chapter02/examples-ch2.cc
 
+// UPDATE:
+// c++ template: complete guide L17507 explains the facade pattern in 
+// details using iterator_facade as a case study
+
 struct list_node {
     int data;
     list_node *next;
