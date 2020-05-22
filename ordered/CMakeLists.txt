@@ -31,3 +31,7 @@ add_test(NAME "ordered::advance-iterator" COMMAND ordered_advance_iterator)
 add_executable(ordered_priority_queue priority_queue.cpp)
 target_link_libraries(ordered_priority_queue PRIVATE doctest)
 add_test(NAME "ordered::priority-queue" COMMAND ordered_priority_queue)
+
+add_executable(ordered_list_merge list_merge.cpp)
+target_link_libraries(ordered_list_merge PRIVATE doctest)
+add_test(NAME "ordered::list-merge" COMMAND ordered_list_merge)
