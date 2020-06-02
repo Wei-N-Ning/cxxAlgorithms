@@ -35,3 +35,7 @@ add_test(NAME "ordered::priority-queue" COMMAND ordered_priority_queue)
 add_executable(ordered_list_merge list_merge.cpp)
 target_link_libraries(ordered_list_merge PRIVATE doctest)
 add_test(NAME "ordered::list-merge" COMMAND ordered_list_merge)
+
+add_executable(ordered_simple_quicksort simple_quicksort.cpp)
+target_link_libraries(ordered_simple_quicksort PRIVATE doctest)
+add_test(NAME "ordered::simple-quicksort" COMMAND ordered_simple_quicksort)
