@@ -39,3 +39,8 @@ add_test(NAME "ordered::list-merge" COMMAND ordered_list_merge)
 add_executable(ordered_simple_quicksort simple_quicksort.cpp)
 target_link_libraries(ordered_simple_quicksort PRIVATE doctest)
 add_test(NAME "ordered::simple-quicksort" COMMAND ordered_simple_quicksort)
+
+add_executable(ordered_simple_heapsort simple_heapsort.cpp)
+target_link_libraries(ordered_simple_heapsort PRIVATE doctest)
+add_test(NAME "ordered::simple-heapsort" COMMAND ordered_simple_heapsort)
+
