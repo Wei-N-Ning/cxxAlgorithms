@@ -9,7 +9,7 @@ template<typename It>
 auto partition(It lo, It hi) {
     It i = lo - 1;  // set cursor
     for (auto j = lo; j < hi; ++j) {  // range excludes the pivot
-        if (*j < *hi) std::swap(*(++i), *j);  // each time cursor moves, it swaps a weak for a strong
+        if (*j < *hi) std::swap(*(++i), *j);  // as i moves, it collects the weaks
     }
     std::swap(*(++i), *hi);  // if cursor moves again, it is guaranteed to point to a strong
     return i;   // swap the strong for the pivot, and returns its position
