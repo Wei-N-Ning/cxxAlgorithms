@@ -17,3 +17,7 @@ add_test(NAME "arithmetic::fourier-trans" COMMAND arithmetic_fourier_trans)
 add_executable(arithmetic_limits limits.cpp)
 target_link_libraries(arithmetic_limits PRIVATE doctest)
 add_test(NAME "arithmetic::limits" COMMAND arithmetic_limits)
+
+add_executable(arithmetic_pi_integration pi_integration.cpp)
+target_link_libraries(arithmetic_pi_integration PRIVATE doctest)
+add_test(NAME "arithmetic::pi-integration" COMMAND arithmetic_pi_integration)
