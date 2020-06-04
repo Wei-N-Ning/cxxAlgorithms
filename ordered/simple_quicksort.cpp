@@ -5,7 +5,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 #include <doctest/doctest.h>
-#include "simple_quicksort_impl_v6.hh"
+#include "simple_quicksort_impl_v7.hh"
 #include <algorithm>
 #include <vector>
 #include <chrono>
