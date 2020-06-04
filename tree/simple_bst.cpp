@@ -11,7 +11,7 @@
 #include <deque>
 #include <iostream>
 #include <iterator>
-#include <boost/iterator/iterator_facade.hpp>
+#include <boost/iterator/boost_iterator_facade.hpp>
 
 // inspired by pro tbb P/125, parallel tree traversal
 // I want to implement a simplest possible BST and iterator, then test how fast the parallel

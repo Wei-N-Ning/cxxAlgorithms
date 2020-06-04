@@ -24,7 +24,7 @@ public:
         }
     }
 
-    int operator*() {
+    int operator*() const {
         return from;
     }
 
@@ -36,17 +36,18 @@ public:
         return other.from != from;
     }
 
-    void operator++() {
+    Range &operator++() {
         if (from != to) {
             from += inc;
         }
+        return *this;
     }
 
     Range begin() {
         return *this;
     }
 
-    Range end() {
+    [[nodiscard]] Range end() const {
         return Range{to, to};
     }
 
@@ -64,7 +65,7 @@ namespace std {
     };
 }
 
-TEST_CASE ("") {
+TEST_CASE ("range-based for loop and algorithms") {
     std::vector<int> v;
     for (auto n : Range(3, -3)) {
         v.push_back(n);
@@ -80,4 +81,16 @@ TEST_CASE ("") {
     Range r{5, 1};
     std::copy(r.begin(), r.end(), v.begin());
     CHECK_EQ(std::vector<int>{5, 4, 3, 2}, v);
+}
+
+// c++ stl cookbook P/106
+// to make the range class compatible with std::minmax_element function (and other variants), need:
+// iterator category
+// operator++ returns a reference
+TEST_CASE ("STL minmax_element") {
+    Range r(3, -3);
+    auto [min_it, max_it]{std::minmax_element(std::begin(r), std::end(r))};
+    auto min_it_{std::min_element(std::begin(r), std::end(r))};
+
+    CHECK_EQ(-2, *min_it);
 }

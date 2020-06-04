@@ -6,7 +6,8 @@
 #include "doctest/doctest.h"
 
 // c++ stl cookbook P/101
-// building your own iterable range
+// build your own iterable range and use it in a for-loop
+
 /**
  * for (auto x : range) { code block; }
  *
@@ -79,5 +80,5 @@ TEST_CASE ("") {
     std::vector<size_t> v(3,0);
     //std::copy(Iter{3}, Iter{}, v.begin());
     //CHECK_EQ(std::vector<size_t>{101, 101, 101}, v);
-    // see custom_iterator_stl.cpp
+    // see custom_iterator_range.cpp
 }

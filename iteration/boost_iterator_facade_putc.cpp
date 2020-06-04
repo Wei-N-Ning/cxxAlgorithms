@@ -10,7 +10,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
-#include <boost/iterator/iterator_facade.hpp>
+#include <boost/iterator/boost_iterator_facade.hpp>
 
 // mastering the c++17 stl P/45
 // implement a sink object that can be plugged into std::copy() algorithm,
