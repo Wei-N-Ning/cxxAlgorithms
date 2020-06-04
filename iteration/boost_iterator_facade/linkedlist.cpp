@@ -6,7 +6,7 @@
 
 #include "doctest/doctest.h"
 
-#include <boost/iterator/boost_iterator_facade.hpp>
+#include <boost/iterator/linkedlist.hpp>
 
 // master c++ stl P/33
 // boost iterator facade to reduce boilerplate code
