@@ -30,4 +30,5 @@ add_subdirectory(search)
 add_subdirectory(fractal)
 add_subdirectory(set)
 add_subdirectory(map)
+add_subdirectory(tree)
 

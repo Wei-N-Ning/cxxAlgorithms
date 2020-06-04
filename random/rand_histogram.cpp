@@ -11,6 +11,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include <functional>
 
 // c++ stl cookbook P/392
 // see also: modern c++ cookbook P/2019 for a different histogram generation
