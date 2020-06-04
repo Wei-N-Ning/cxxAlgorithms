@@ -37,4 +37,3 @@ add_executable(iteration_boost_iterator_facade_putc boost_iterator_facade_putc.c
 target_link_libraries(iteration_boost_iterator_facade_putc PRIVATE doctest)
 target_include_directories(iteration_boost_iterator_facade_putc PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::boost-iterator-facade-putc" COMMAND iteration_boost_iterator_facade_putc)
-
