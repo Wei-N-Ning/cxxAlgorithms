@@ -116,7 +116,7 @@ TEST_CASE ("mutability") {
     CHECK_EQ(a, 1);
 }
 
-TEST_CASE ("bidirectional access") {
+TEST_CASE ("bidirectional access (and distance_to())") {
     std::vector<int> vec{3, 14, 1, 5, 9, 2};
     block_iterator first{vec};
     block_iterator last{vec, 6};
