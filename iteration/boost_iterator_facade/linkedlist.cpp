@@ -8,6 +8,8 @@
 
 #include <boost/iterator/linkedlist.hpp>
 #include <memory>
+#include <vector>
+#include <algorithm>
 
 // master c++ stl P/33
 // boost iterator facade to reduce boilerplate code
@@ -28,6 +30,9 @@ template<typename T>
 struct list_node;
 
 template<typename T>
+class list_of_ints;
+
+template<typename T>
 using PNode = std::shared_ptr<list_node<T>>;
 
 template<typename T>
@@ -38,14 +43,12 @@ struct list_node {
     list_node(T v, PNode<T> next_): data{v}, next{next_} {}
 };
 
-template<typename T>
-class list_of_ints;
-
 template<typename T, bool Const>
 class list_of_ints_iterator : public boost::iterator_facade<
     list_of_ints_iterator<T, Const>,
     std::conditional_t<Const, const int, int>,
-    std::forward_iterator_tag> {
+    std::forward_iterator_tag
+> {
     friend class boost::iterator_core_access;
 
     friend class list_of_ints<T>;
@@ -57,17 +60,25 @@ class list_of_ints_iterator : public boost::iterator_facade<
 
     explicit list_of_ints_iterator(node_pointer p) : ptr_(p) {}
 
-    [[nodiscard]] auto &dereference() const { return ptr_->data; }
+    [[nodiscard]] auto &dereference() const {
+        return ptr_->data;
+    }
 
-    void increment() { ptr_ = ptr_->next; }
+    void increment() {
+        ptr_ = ptr_->next;
+    }
 
     // Support comparison between iterator and const_iterator types
     template<bool R>
-    bool equal(const list_of_ints_iterator<T, R> &rhs) const { return ptr_ == rhs.ptr_; }
+    bool equal(const list_of_ints_iterator<T, R> &rhs) const {
+        return ptr_ == rhs.ptr_;
+    }
 
 public:
     // Support implicit conversion of iterator to const_iterator (but not vice versa)
-    explicit operator list_of_ints_iterator<T, true>() const { return list_of_ints_iterator<T, true>{ptr_}; }
+    explicit operator list_of_ints_iterator<T, true>() const {
+        return list_of_ints_iterator<T, true>{ptr_};
+    }
 };
 
 template<typename T>
@@ -81,7 +92,12 @@ public:
 
     list_of_ints() = default;
     list_of_ints(std::initializer_list<T> &&il) {
-        std::for_each(std::begin(il), std::end(il), [this](auto &v) { this->push_back(v); });
+        std::for_each(
+            std::begin(il), std::end(il),
+            [this](auto &v) {
+                this->push_back(v);
+            }
+        );
     }
 
     // Begin and end member functions
@@ -127,4 +143,11 @@ TEST_CASE ("range-based for loop") {
     for (const auto &v : li) {
         CHECK_EQ(1, v);
     }
+}
+
+TEST_CASE ("use as input in STL algorithm") {
+    list_of_ints<int> li{3, 14, 1, 5, 9, 26, 53, 58, 97};
+    std::vector<int> v;
+    std::copy(li.begin(), li.end(), std::back_inserter(v));
+    CHECK_EQ(std::vector<int>{3, 14, 1, 5, 9, 26, 53, 58, 97}, v);
 }
