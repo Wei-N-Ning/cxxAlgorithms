@@ -17,23 +17,27 @@
 // c++ template: complete guide L17507 explains the facade pattern in 
 // details using iterator_facade as a case study
 
+template<typename T>
 struct list_node {
-    int data;
+    T data;
     list_node *next;
 };
 
-template<bool Const>
+template<typename T>
+class list_of_ints;
+
+template<typename T, bool Const>
 class list_of_ints_iterator : public boost::iterator_facade<
-    list_of_ints_iterator<Const>,
+    list_of_ints_iterator<T, Const>,
     std::conditional_t<Const, const int, int>,
     std::forward_iterator_tag> {
     friend class boost::iterator_core_access;
 
-    friend class list_of_ints;
+    friend class list_of_ints<T>;
 
-    friend class list_of_ints_iterator<!Const>;
+    friend class list_of_ints_iterator<T, !Const>;
 
-    using node_pointer = std::conditional_t<Const, const list_node *, list_node *>;
+    using node_pointer = std::conditional_t<Const, const list_node<T> *, list_node<T> *>;
     node_pointer ptr_;
 
     explicit list_of_ints_iterator(node_pointer p) : ptr_(p) {}
@@ -44,22 +48,23 @@ class list_of_ints_iterator : public boost::iterator_facade<
 
     // Support comparison between iterator and const_iterator types
     template<bool R>
-    bool equal(const list_of_ints_iterator<R> &rhs) const { return ptr_ == rhs.ptr_; }
+    bool equal(const list_of_ints_iterator<T, R> &rhs) const { return ptr_ == rhs.ptr_; }
 
 public:
     // Support implicit conversion of iterator to const_iterator (but not vice versa)
-    explicit operator list_of_ints_iterator<true>() const { return list_of_ints_iterator<true>{ptr_}; }
+    explicit operator list_of_ints_iterator<T, true>() const { return list_of_ints_iterator<T, true>{ptr_}; }
 };
 
+template<typename T>
 class list_of_ints {
-    list_node *head_ = nullptr;
-    list_node *tail_ = nullptr;
+    list_node<T> *head_ = nullptr;
+    list_node<T> *tail_ = nullptr;
     int size_ = 0;
 public:
-    using const_iterator = list_of_ints_iterator<true>;
-    using iterator = list_of_ints_iterator<false>;
+    using const_iterator = list_of_ints_iterator<T, true>;
+    using iterator = list_of_ints_iterator<T, false>;
 
-    list_of_ints(std::initializer_list<int> &&il) {
+    list_of_ints(std::initializer_list<T> &&il) {
         std::for_each(std::cbegin(il), std::cend(il), [this](const auto &v) { this->push_back(v); });
     }
 
@@ -81,7 +86,7 @@ public:
     [[nodiscard]] int size() const { return size_; }
 
     void push_back(int value) {
-        auto *new_tail = new list_node{value, nullptr};
+        auto *new_tail = new list_node<T>{value, nullptr};
         if (tail_) {
             tail_->next = new_tail;
         } else {
@@ -92,14 +97,14 @@ public:
     }
 
     ~list_of_ints() {
-        for (list_node *next, *p = head_; p != nullptr; p = next) {
+        for (list_node<T> *next, *p = head_; p != nullptr; p = next) {
             next = p->next;
             delete p;
         }
     }
 };
 
-TEST_CASE ("") {
+TEST_CASE ("range-based for loop") {
     list_of_ints li{1, 1, 1, 1};
     for (auto &v : li) {
         CHECK_EQ(1, v);
@@ -108,4 +113,3 @@ TEST_CASE ("") {
         CHECK_EQ(1, v);
     }
 }
-
