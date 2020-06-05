@@ -17,6 +17,7 @@
 // it also explores:
 // - the complete list of methods to impl
 //   accordingly to https://www.boost.org/doc/libs/1_72_0/libs/iterator/doc/facade-and-adaptor.html
+//   pay special attention on `iterator_facade operations` section
 // - use this block_iterator in STL and custom algorithms (copy and qsort)
 // - mutability
 
@@ -59,7 +60,7 @@ private:
         position += n;
     }
 
-    bool equal(const block_iterator<T, Alloc, Container> &other) {
+    bool equal(const block_iterator<T, Alloc, Container> &other) const {
         return ctn == other.ctn && position == other.position;
     }
 

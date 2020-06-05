@@ -1,4 +1,7 @@
+
+########################################################################################################################
 # roll my own iterator the hard way (implement everything)
+
 add_executable(iteration_custom_iterator_forloop custom_iterator/for_loop.cpp)
 target_link_libraries(iteration_custom_iterator_forloop PRIVATE doctest)
 add_test(NAME "iteration::custom-iterator-forloop" COMMAND iteration_custom_iterator_forloop)
@@ -7,7 +10,9 @@ add_executable(iteration_custom_iterator_range custom_iterator/range.cpp)
 target_link_libraries(iteration_custom_iterator_range PRIVATE doctest)
 add_test(NAME "iteration::custom-iterator-range" COMMAND iteration_custom_iterator_range)
 
+########################################################################################################################
 # roll my own iterator using boost iterator facade
+
 add_executable(iteration_boost_iterator_facade_list boost_iterator_facade/linkedlist.cpp)
 target_link_libraries(iteration_boost_iterator_facade_list PRIVATE doctest)
 target_include_directories(iteration_boost_iterator_facade_list PRIVATE ${Boost_INCLUDE_DIRS})
@@ -22,6 +27,13 @@ add_executable(iteration_boost_iterator_facade_array boost_iterator_facade/array
 target_link_libraries(iteration_boost_iterator_facade_array PRIVATE doctest)
 target_include_directories(iteration_boost_iterator_facade_array PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::boost-iterator-facade-array" COMMAND iteration_boost_iterator_facade_array)
+
+add_executable(iteration_boost_iterator_facade_bst boost_iterator_facade/bst.cpp)
+target_link_libraries(iteration_boost_iterator_facade_bst PRIVATE doctest)
+target_include_directories(iteration_boost_iterator_facade_bst PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::boost-iterator-facade-bst" COMMAND iteration_boost_iterator_facade_bst)
+
+########################################################################################################################
 
 add_executable(iteration_fib_iter fib_iter.cpp)
 target_link_libraries(iteration_fib_iter PRIVATE doctest)
