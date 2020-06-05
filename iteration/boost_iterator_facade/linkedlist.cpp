@@ -7,6 +7,7 @@
 #include "doctest/doctest.h"
 
 #include <boost/iterator/linkedlist.hpp>
+#include <memory>
 
 // master c++ stl P/33
 // boost iterator facade to reduce boilerplate code
@@ -17,10 +18,24 @@
 // c++ template: complete guide L17507 explains the facade pattern in 
 // details using iterator_facade as a case study
 
+// UPDATE:
+// update this example to:
+// - turn list node class to a template to support an arbitrary type T
+// - use std::shared_ptr for better memory management
+// - update the iterator class accordingly
+
+template<typename T>
+struct list_node;
+
+template<typename T>
+using PNode = std::shared_ptr<list_node<T>>;
+
 template<typename T>
 struct list_node {
     T data;
-    list_node *next;
+    PNode<T> next;
+
+    list_node(T v, PNode<T> next_): data{v}, next{next_} {}
 };
 
 template<typename T>
@@ -37,7 +52,7 @@ class list_of_ints_iterator : public boost::iterator_facade<
 
     friend class list_of_ints_iterator<T, !Const>;
 
-    using node_pointer = std::conditional_t<Const, const list_node<T> *, list_node<T> *>;
+    using node_pointer = std::conditional_t<Const, const PNode<T>, PNode<T>>;
     node_pointer ptr_;
 
     explicit list_of_ints_iterator(node_pointer p) : ptr_(p) {}
@@ -57,15 +72,16 @@ public:
 
 template<typename T>
 class list_of_ints {
-    list_node<T> *head_ = nullptr;
-    list_node<T> *tail_ = nullptr;
-    int size_ = 0;
+    PNode<T> head_{nullptr};
+    PNode<T> tail_{nullptr};
+    std::size_t size_{0};
 public:
     using const_iterator = list_of_ints_iterator<T, true>;
     using iterator = list_of_ints_iterator<T, false>;
 
+    list_of_ints() = default;
     list_of_ints(std::initializer_list<T> &&il) {
-        std::for_each(std::cbegin(il), std::cend(il), [this](const auto &v) { this->push_back(v); });
+        std::for_each(std::begin(il), std::end(il), [this](auto &v) { this->push_back(v); });
     }
 
     // Begin and end member functions
@@ -83,10 +99,10 @@ public:
     [[nodiscard]] const_iterator end() const { return const_iterator{nullptr}; }
 
     // Other member operations
-    [[nodiscard]] int size() const { return size_; }
+    [[nodiscard]] std::size_t size() const { return size_; }
 
-    void push_back(int value) {
-        auto *new_tail = new list_node<T>{value, nullptr};
+    void push_back(T value) {
+        PNode<T> new_tail = std::make_shared<list_node<T>>(value, nullptr);
         if (tail_) {
             tail_->next = new_tail;
         } else {
@@ -95,17 +111,16 @@ public:
         tail_ = new_tail;
         size_ += 1;
     }
-
-    ~list_of_ints() {
-        for (list_node<T> *next, *p = head_; p != nullptr; p = next) {
-            next = p->next;
-            delete p;
-        }
-    }
 };
 
+TEST_CASE ("create list_of_ints and push a new element") {
+    list_of_ints<int> li;
+    li.push_back(1);
+}
+
 TEST_CASE ("range-based for loop") {
-    list_of_ints li{1, 1, 1, 1};
+    list_of_ints<int> li{1, 1, 1, 1};
+
     for (auto &v : li) {
         CHECK_EQ(1, v);
     }

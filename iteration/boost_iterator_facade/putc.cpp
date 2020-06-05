@@ -5,12 +5,9 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 #include "doctest/doctest.h"
-
-#include <iterator>
-#include <vector>
-#include <iostream>
-#include <algorithm>
 #include <boost/iterator/linkedlist.hpp>
+#include <algorithm>
+#include <string>
 
 // mastering the c++17 stl P/45
 // implement a sink object that can be plugged into std::copy() algorithm,
