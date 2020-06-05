@@ -15,7 +15,7 @@
 
 #include "doctest/doctest.h"
 
-#include <boost/iterator/linkedlist.hpp>
+#include <boost/iterator/iterator_facade.hpp>
 #include <memory>
 #include <algorithm>
 #include <random>

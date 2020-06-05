@@ -5,7 +5,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
 #include "doctest/doctest.h"
-#include <boost/iterator/linkedlist.hpp>
+#include <boost/iterator/iterator_facade.hpp>
 #include <algorithm>
 #include <string>
 

@@ -6,7 +6,7 @@
 
 #include "doctest/doctest.h"
 
-#include <boost/iterator/linkedlist.hpp>
+#include <boost/iterator/iterator_facade.hpp>
 #include <vector>
 #include <algorithm>
 #include <iterator>
