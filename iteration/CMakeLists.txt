@@ -18,6 +18,11 @@ target_link_libraries(iteration_boost_iterator_facade_putc PRIVATE doctest)
 target_include_directories(iteration_boost_iterator_facade_putc PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::boost-iterator-facade-putc" COMMAND iteration_boost_iterator_facade_putc)
 
+add_executable(iteration_boost_iterator_facade_array boost_iterator_facade/array.cpp)
+target_link_libraries(iteration_boost_iterator_facade_array PRIVATE doctest)
+target_include_directories(iteration_boost_iterator_facade_array PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::boost-iterator-facade-array" COMMAND iteration_boost_iterator_facade_array)
+
 add_executable(iteration_fib_iter fib_iter.cpp)
 target_link_libraries(iteration_fib_iter PRIVATE doctest)
 add_test(NAME "iteration::fibonacci-number-iterator" COMMAND iteration_fib_iter)
