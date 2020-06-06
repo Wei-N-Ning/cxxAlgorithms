@@ -182,3 +182,14 @@ TEST_CASE ("STL algorithms") {
     });
     std::cout << sum / (double)sz << std::endl;
 }
+
+TEST_CASE ("mutability") {
+    // a better example/impl is to offer immutability, i.e. offering
+    // a const-iterator via cbegin() and cend()
+    const std::size_t sz = 4;
+    auto tree{create_tree(sz, 1, 9)};
+    auto it = tree->begin();
+    *(++it) = -999;   // this break the invariant! (break the inorder)
+    tree->dfs([](const auto &n) { std::cout << n << " "; });
+    std::cout << std::endl;
+}
