@@ -1,5 +1,14 @@
 cmake_minimum_required(VERSION 3.8)
-project(CxxAlgorithms)
+
+# avoid this
+# see: https://gitlab.kitware.com/cmake/community/-/wikis/FAQ#how-do-i-use-a-different-compiler
+# and: 
+# https://stackoverflow.com/questions/13054451/unable-to-specify-the-compiler-with-cmake
+# https://stackoverflow.com/questions/11588855/how-do-you-set-cmake-c-compiler-and-cmake-cxx-compiler-for-building-assimp-for-i
+set(CMAKE_C_COMPILER gcc-9)
+set(CMAKE_CXX_COMPILER g++-9)
+
+project(CxxAlgorithms LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
