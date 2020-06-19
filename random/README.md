@@ -1,5 +1,17 @@
 # Random number generator
 
+## portable hardware-backed random device is hard
+
+see: c++ boost app dev P/327
+
+OS may have more than one such type of random number generators;
+
+POSIX have `/dev/random` and `/dev/urandom`; the former is more secure but blocking
+when waiting for entropy and thate could take seconds, which is usually unsuitable
+for applications.
+
+use `/dev/random` to create long-lifetime GPG/SSL/SSH keys
+
 ## Boost UUID
 
 can generate uuid in std::string format. see uuid_to_string.cpp
