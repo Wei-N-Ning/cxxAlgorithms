@@ -20,4 +20,5 @@ add_test(NAME "arithmetic::limits" COMMAND arithmetic_limits)
 
 add_executable(arithmetic_pi_integration pi_integration.cpp)
 target_link_libraries(arithmetic_pi_integration PRIVATE doctest)
+target_include_directories(arithmetic_pi_integration PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "arithmetic::pi-integration" COMMAND arithmetic_pi_integration)
