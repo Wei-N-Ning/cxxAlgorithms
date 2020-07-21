@@ -40,4 +40,4 @@ add_subdirectory(fractal)
 add_subdirectory(set)
 add_subdirectory(map)
 add_subdirectory(tree)
-
+add_subdirectory(prefix)
