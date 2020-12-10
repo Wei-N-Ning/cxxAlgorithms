@@ -44,3 +44,6 @@ add_executable(ordered_simple_heapsort simple_heapsort.cpp)
 target_link_libraries(ordered_simple_heapsort PRIVATE doctest)
 add_test(NAME "ordered::simple-heapsort" COMMAND ordered_simple_heapsort)
 
+add_executable(ordered_partial_sort partial_sort.cpp)
+target_link_libraries(ordered_partial_sort PRIVATE doctest)
+add_test(NAME "ordered::partial_sort" COMMAND ordered_partial_sort)
