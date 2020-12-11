@@ -77,6 +77,9 @@ TEST_CASE( "is STL tuple hashable? (if all the members are)" )
     std::unordered_map< memoized_key_t, size_t, hash_tuple::hash< memoized_key_t > > cache;
 }
 
+// demonstrate the concept of caching.
+// see cxxFP/lazy_evaluation
+
 // make_memoized does NOT work with lambda objects
 template < typename Result, typename... Args >
 auto make_memoized( Result ( *f )( Args... ) )
