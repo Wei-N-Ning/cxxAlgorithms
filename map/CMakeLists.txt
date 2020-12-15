@@ -2,3 +2,7 @@
 add_executable(map_efficient_insert efficient_insert.cpp)
 target_link_libraries(map_efficient_insert PRIVATE doctest)
 add_test(NAME "map::efficient-insert" COMMAND map_efficient_insert)
+
+add_executable(map_efficient_accessing efficient_map_accessing.cpp)
+target_link_libraries(map_efficient_accessing PRIVATE doctest)
+add_test(NAME "map::efficient_accessing" COMMAND map_efficient_accessing)
