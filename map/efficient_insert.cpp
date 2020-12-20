@@ -46,3 +46,18 @@ TEST_CASE( "hash map" )
         ;  // it->second
     }
 }
+
+TEST_CASE( "try_emplace" )
+{
+    std::unordered_map< std::string, std::string > m;
+    m[ "e1m1" ] = "32";
+    m[ "e1m2" ] = "64";
+    std::string s{ "213" };
+    // will not move s, key `e1m1` exists
+    m.try_emplace( "e1m1", std::move(s) );
+
+    s = "213";
+    // will make s in an invalid state, key `e2m2` does not exist
+    m.try_emplace( "e2m2", std::move( s ) );
+
+}
