@@ -31,8 +31,8 @@ TEST_CASE( "c++17 extract insert" )
     std::set< Item > s2;
     s2.emplace( 2 );
 
-    auto entry = s1.extract( Item{ 1 } );
-    s2.insert( std::move( entry ) );
+    auto node = s1.extract( Item{ 1 } );
+    s2.insert( std::move( node ) );
 
     CHECK_EQ( s2.size(), 2 );
     CHECK_EQ( s1.size(), 0 );
