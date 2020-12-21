@@ -22,3 +22,8 @@ add_executable(arithmetic_pi_integration pi_integration.cpp)
 target_link_libraries(arithmetic_pi_integration PRIVATE doctest)
 target_include_directories(arithmetic_pi_integration PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "arithmetic::pi-integration" COMMAND arithmetic_pi_integration)
+
+add_executable(arithmetic_least_common_multiple lcm.cpp)
+target_link_libraries(arithmetic_least_common_multiple PRIVATE doctest)
+add_test(NAME "arithmetic::least_common_multiple" COMMAND arithmetic_least_common_multiple)
+

@@ -1,0 +1,3 @@
+add_executable(sampling_container_sampling container_sampling.cpp)
+target_link_libraries(sampling_container_sampling PRIVATE doctest)
+add_test(NAME "sampling::container_sampling" COMMAND sampling_container_sampling)

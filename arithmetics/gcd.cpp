@@ -9,8 +9,8 @@
 
 // adv c++ faq P/26
 // reference: https://en.cppreference.com/w/cpp/numeric/gcd
-TEST_CASE ("") {
-
-    CHECK_EQ(7, std::gcd(28, 21));
-    CHECK_EQ(7, std::gcd(21, 28));
+TEST_CASE( "greatest common divisor" )
+{
+    CHECK_EQ( 7, std::gcd( 28, 21 ) );
+    CHECK_EQ( 7, std::gcd( 21, 28 ) );
 }
