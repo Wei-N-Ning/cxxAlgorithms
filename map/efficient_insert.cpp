@@ -54,10 +54,35 @@ TEST_CASE( "try_emplace" )
     m[ "e1m2" ] = "64";
     std::string s{ "213" };
     // will not move s, key `e1m1` exists
-    m.try_emplace( "e1m1", std::move(s) );
+    m.try_emplace( "e1m1", std::move( s ) );
 
     s = "213";
     // will make s in an invalid state, key `e2m2` does not exist
     m.try_emplace( "e2m2", std::move( s ) );
+}
 
+// c++ 17 in detail P/241
+// the emplace_xx() methods in the STL containers get a face lift in C++ 17;
+// they return the reference to the newly created node/element
+// see also: std::vector::emplace
+
+TEST_CASE( "emplace and get reference" )
+{
+    std::unordered_map< int, int > m;
+    {
+        auto [ iter, wasAdded ] = m.emplace( 1, 1 );
+        CHECK( wasAdded );
+        iter->second = 12;
+        CHECK_EQ( m[ 1 ], 12 );
+    }
+    {
+        auto [ _, wasAdded ] = m.emplace( 1, 1 );
+        CHECK_FALSE( wasAdded );
+        // emplace() does not modify the existing node, which is still <1, 12>
+        CHECK_EQ( m[ 1 ], 12 );
+
+        // insert_or_assign() does
+        m.insert_or_assign( 1, 1 );
+        CHECK_EQ( m[ 1 ], 1 );
+    }
 }
