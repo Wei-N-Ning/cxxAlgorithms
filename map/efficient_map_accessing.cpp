@@ -12,8 +12,13 @@
 // some new language syntax in C++17
 // great to see it's learning from Golang
 
-TEST_CASE( "Golang style if and assignment" )
+TEST_CASE( "Golang style if with initialization" )
 {
+    // c++ 17 complete guide P/20
+    // Note: this new feature is also documented in other places:
+    // cxxAlgorithms/stl/auto_if_switch_variable
+    // (I'm also going to add another use case in cxxConcurrency with mutex locking)
+
     std::unordered_map< std::string, int > dict{ { "e1m1", 1 } };
 
     // automatic type deduction
