@@ -9,6 +9,8 @@
 
 // c++ 17 in detail P/236
 // "move" an entry from set-1 to set-2 while avoiding excessive copies
+// see also c++ 17 the complete guide P/293
+// the same semantic applies to std::map too
 
 struct Item
 {
