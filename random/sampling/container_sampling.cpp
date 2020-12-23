@@ -27,7 +27,7 @@ TEST_CASE( "take samples from vector and place them into an ordered set" )
                  std::inserter( ys, ys.begin() ),
                  numSamples,
                  // still require a random generator
-                 std::mt19937{ std::random_device{}() } );
+                 std::mt19937{ std::random_device{}() } ); // or std::default_random_engine{} but bad
     std::for_each( ys.cbegin(),
                    ys.cend(),
                    //

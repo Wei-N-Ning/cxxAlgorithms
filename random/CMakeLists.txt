@@ -1,3 +1,5 @@
+add_subdirectory(sampling)
+
 add_executable(random_std_rand std_rand.cpp bsd_drand48.cpp bsd_drand48.hh)
 target_link_libraries(random_std_rand PUBLIC m)
 add_test(NAME "std::random::test-drand48" COMMAND random_std_rand)
