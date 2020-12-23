@@ -33,6 +33,12 @@ target_link_libraries(iteration_boost_iterator_facade_bst PRIVATE doctest)
 target_include_directories(iteration_boost_iterator_facade_bst PRIVATE ${Boost_INCLUDE_DIRS})
 add_test(NAME "iteration::boost-iterator-facade-bst" COMMAND iteration_boost_iterator_facade_bst)
 
+add_executable(iteration_boost_iterator_facade_directory_iterator_wrapper boost_iterator_facade/directory_iterator_wrapper.cpp)
+target_link_libraries(iteration_boost_iterator_facade_directory_iterator_wrapper PRIVATE doctest)
+target_include_directories(iteration_boost_iterator_facade_directory_iterator_wrapper PRIVATE ${Boost_INCLUDE_DIRS})
+add_test(NAME "iteration::boost-iterator-facade-directory-iterator-wrapper"
+    COMMAND iteration_boost_iterator_facade_directory_iterator_wrapper)
+
 ########################################################################################################################
 
 add_executable(iteration_fib_iter fib_iter.cpp)
