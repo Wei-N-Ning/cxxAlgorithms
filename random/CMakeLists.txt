@@ -34,3 +34,7 @@ add_test(NAME "random::stl-distribution" COMMAND random_stl_distribution)
 add_executable(random_mt19937_state mt19937_state.cpp)
 target_link_libraries(random_mt19937_state PRIVATE doctest)
 add_test(NAME "random::mt19937-state" COMMAND random_mt19937_state)
+
+add_executable(random_strings random_strings.cpp)
+target_link_libraries(random_strings PRIVATE doctest)
+add_test(NAME "random::strings" COMMAND random_strings)
